@@ -7,6 +7,14 @@ $(function(){
 			$("body").removeClass("p-scrolling");
 		}
 	});
+	$('#job-detail').scroll(function(){
+		if($(this).scrollTop()>=100){
+			$(".hidejob").addClass("dark");$("#detail-title").addClass("dark");$("#job-detail-header").addClass("transp");
+		}
+		else{
+			$(".hidejob").removeClass("dark");$("#detail-title").removeClass("dark");$("#job-detail-header").removeClass("transp");
+		}
+	});
 	//菜单的下拉与收回
 	$('.menu-btn').on('click',function(){
 		$('.mm-menu').css('top','0%');
@@ -45,6 +53,10 @@ $(function(){
 	// $.profile({parent:'.o-team'});
 	// $.profile({parent:'.o-team'});
 	// $.profile({parent:'.o-team'});
+	//关闭工作详情
+	$('.hidejob').on('click',function(){
+		$('#job-detail').css('right','0');$('#job-detail').css('width','0%');
+	});
 });
 //上拉加载参数
 var data,

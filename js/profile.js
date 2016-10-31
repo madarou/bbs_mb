@@ -20,7 +20,7 @@ var bgcolors = {"FULL":"#EA2424","PART":"#27c181","BOTH":"#8c0707"};
 				var template ='<div class="about-img">'+
 									'<img src="'+window.avatars[this.settings.source]+'" />'+
 								'</div>'+
-								'<a  style="text-decoration:initial" href="'+this.settings.href+'?id='+this.settings.id+'"><div class="about-sDetails">'+
+								'<a href="#" class="showjob" style="text-decoration:initial" id="'+this.settings.source+'-'+this.settings.id+'"><div class="about-sDetails">'+
 									'<h3>'+this.settings.title+'</h3>'+
 									'<h4>来源:'+window.sources[this.settings.source]+'</h4>'+
 									'<h4>时间:'+this.settings.time+'</h4>'+
@@ -30,6 +30,22 @@ var bgcolors = {"FULL":"#EA2424","PART":"#27c181","BOTH":"#8c0707"};
 								'</div>';
 				//加入父页面
 				this.profile=$('<div>').addClass('o-team-person').html(template).appendTo(this.settings.parent);
+				//添加点击弹出详情
+				this.showjob();
+			},
+			showjob:function(){
+				var trigger = this.profile.find('.showjob');
+				var _that = this;
+				$.each(trigger,function(index,item){
+					$(item).on('click',function(){
+						$('#job-detail').animate({width:'100%'}, 100,'linear');
+						var jobsource = $(this).attr('id').split('-')[0];
+						var jobid = $(this).attr('id').split('-')[1];
+						$.getJSON(window.domain+'/rest/jobs/getcontent?id='+jobid+'&source='+jobsource,function(data){
+							$('#job-detail-ct').html(data.content);
+						});
+					});
+				});
 			}
 	}
 	
