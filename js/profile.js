@@ -52,6 +52,10 @@ var imgpref = {"QINGHUA":"http://www.newsmth.net","PKU":"","FDU":"","SJ":"http:/
 								ct = ct.replace(/<img src="\/file/g, '<img src="'+window.imgpref[_that.settings.source]+'/file');
 							}
 							$('#job-detail-ct').html(ct);
+							setTimeout(function(){
+								window.detailScroll.refresh();
+								},200);
+								
 						});
 					});
 				});

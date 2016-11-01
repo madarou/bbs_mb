@@ -2,19 +2,15 @@ $(function(){
 	$(window).scroll(function(){
 		if($(this).scrollTop()>=100){
 			$("body").addClass("p-scrolling");
-			$("#back-to-top").fadeIn(100);
 		}
 		else{
 			$("body").removeClass("p-scrolling");
-			$("#back-to-top").fadeOut(100);
 		}
 	});
 	//当点击跳转链接后，回到页面顶部位置
 		$("#back-to-top").click(function() {
-			/* $('body,html').animate({
-				scrollTop: 0
-			}, 100); */
-			$('#bt').on('click', function(e) {
+			//zepto没有animate的scrollTop，这里用的zepto.scroll.js里自己写的
+			/* $('#bt').on('click', function(e) {
 			  $.scrollTo({
 				endY: 0,
 				duration: 200,
@@ -22,7 +18,8 @@ $(function(){
 				  
 				}
 			  });
-			});
+			}); */
+			setTimeout(function(){myScroll.scrollToElement('.o-team', 100);},100);
 		});
 	$('#job-detail').scroll(function(){
 		if($(this).scrollTop()>=100){
@@ -94,6 +91,7 @@ $(function(){
 				pageIndex++;
 				myScroll.refresh();
 		});
+		setTimeout(function(){myScroll.scrollToElement('.o-team', 100);},100);
 	});
 	//点击全职类型按钮
 	$('#full-load').on('click',function(){
@@ -115,6 +113,7 @@ $(function(){
 				pageIndex++;
 				myScroll.refresh();
 		});
+		setTimeout(function(){myScroll.scrollToElement('.o-team', 100);},100);
 	});
 	//点击所有类型按钮
 	$('#all-load').on('click',function(){
@@ -136,11 +135,12 @@ $(function(){
 				pageIndex++;
 				myScroll.refresh();
 		});
+		setTimeout(function(){myScroll.scrollToElement('.o-team', 100);},100);
 	});
 });
 //上拉加载参数
 var data,
-myScroll,
+myScroll,detailScroll,
 pullUpEl, pullUpOffset,
 generatedCount = 0;
 
@@ -167,7 +167,7 @@ $.getJSON(domain+'/rest/jobs/getlist?start='+(pageIndex-1)*pageSize+'&end='+page
 		});
 		pageIndex++;
 		if(pageIndex%2!=0){
-			$('.o-team').append('<div style="text-align:center;font-size:2px;color:rgba(29, 20, 20, 0.46);">关注公众号"聚点一族", 新工作、好工作尽在掌握</div>');
+			$('.o-team').append('<div style="text-align:center;font-size:12px;color:rgba(29, 20, 20, 0.46);">关注公众号"聚点一族", 新工作、好工作尽在掌握</div>');
 		}
 		myScroll.refresh();
 /* 		$.profile({parent:'.o-team'});
@@ -189,8 +189,10 @@ $.getJSON(domain+'/rest/jobs/getlist?start='+(pageIndex-1)*pageSize+'&end='+page
 //去除浏览器默认事件
 document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 //domready后绑定初始化事件
-document.addEventListener('DOMContentLoaded', loaded, false);
-
+document.addEventListener('DOMContentLoaded', loadedWrapper, false);
+function loadedWrapper(){
+	setTimeout(loaded,200);
+}
 function loaded() {
 pullUpEl = document.getElementById('pullUp');	
 pullUpOffset = pullUpEl.offsetHeight;
@@ -219,5 +221,9 @@ myScroll = new iScroll('o-person-details-pane', {
 			pullUpAction();
 		}
 	}
+});
+
+detailScroll = new iScroll('job-detail-wrapper', {
+	vScrollbar : false
 });
 }
