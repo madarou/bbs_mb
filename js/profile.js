@@ -3,6 +3,7 @@ var avatars = {"QINGHUA":"img/QINGHUA.jpg","PKU":"img/PKU.jpg","FDU":"img/FDU.jp
 var jobtypes = {"FULL":"全职","PART":"兼职","BOTH":"全兼"};
 var sources ={"QINGHUA":"清华大学","PKU":"北京大学","FDU":"复旦大学","SJ":"上海交通大学","NJU":"南京大学"};
 var bgcolors = {"FULL":"#EA2424","PART":"#27c181","BOTH":"#8c0707"};
+var imgpref = {"QINGHUA":"http://www.newsmth.net","PKU":"","FDU":"","SJ":"http://bbs.sjtu.cn","NJU":""};
 ;(function($,window,undifined){
 	var Profile = function(options){
 		this.settings=$.extend({},Profile.defaults,options);
@@ -39,10 +40,18 @@ var bgcolors = {"FULL":"#EA2424","PART":"#27c181","BOTH":"#8c0707"};
 				$.each(trigger,function(index,item){
 					$(item).on('click',function(){
 						$('#job-detail').animate({width:'100%'}, 100,'linear');
+						$('.hidejob').css('display','inherit');
 						var jobsource = $(this).attr('id').split('-')[0];
 						var jobid = $(this).attr('id').split('-')[1];
 						$.getJSON(window.domain+'/rest/jobs/getcontent?id='+jobid+'&source='+jobsource,function(data){
-							$('#job-detail-ct').html(data.content);
+							var ct = data.content;//有些学校的图片是相对地址，要加上域名
+							if(_that.settings.source=='QINGHUA'){
+								ct = ct.replace(/<img src="\/nForum/g, '<img src="'+window.imgpref[_that.settings.source]+'/nForum');
+							}
+							else if(_that.settings.source=='SJ'){
+								ct = ct.replace(/<img src="\/file/g, '<img src="'+window.imgpref[_that.settings.source]+'/file');
+							}
+							$('#job-detail-ct').html(ct);
 						});
 					});
 				});

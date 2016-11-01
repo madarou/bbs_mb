@@ -2,11 +2,28 @@ $(function(){
 	$(window).scroll(function(){
 		if($(this).scrollTop()>=100){
 			$("body").addClass("p-scrolling");
+			$("#back-to-top").fadeIn(100);
 		}
 		else{
 			$("body").removeClass("p-scrolling");
+			$("#back-to-top").fadeOut(100);
 		}
 	});
+	//当点击跳转链接后，回到页面顶部位置
+		$("#back-to-top").click(function() {
+			/* $('body,html').animate({
+				scrollTop: 0
+			}, 100); */
+			$('#bt').on('click', function(e) {
+			  $.scrollTo({
+				endY: 0,
+				duration: 200,
+				callback: function() {
+				  
+				}
+			  });
+			});
+		});
 	$('#job-detail').scroll(function(){
 		if($(this).scrollTop()>=100){
 			$(".hidejob").addClass("dark");$("#detail-title").addClass("dark");$("#job-detail-header").addClass("transp");
@@ -55,7 +72,70 @@ $(function(){
 	// $.profile({parent:'.o-team'});
 	//关闭工作详情
 	$('.hidejob').on('click',function(){
-		$('#job-detail').css('right','0');$('#job-detail').css('width','0%');
+		$('#job-detail').css('right','0');$('#job-detail').css('width','0%');$('.hidejob').css('display','none');
+	});
+	//点击兼职类型按钮
+	$('#part-load').on('click',function(){
+		$('.o-team').html('');
+		$(this).addClass("b-bigger");$("#all-load").removeClass("b-bigger");$("#full-load").removeClass("b-bigger");
+		pageIndex=1;
+		curJobType='PART';
+		$.getJSON(domain+'/rest/jobs/getlist?start='+(pageIndex-1)*pageSize+'&end='+pageIndex*pageSize+'&jobtype='+curJobType+'&source='+curSource, function (data, state) {
+			$.each(data.joblist,function(index,item){
+					for(attr in item){
+						if(item[attr]==0)
+							continue;
+						if(item[attr]==null || item[attr]==undefined || item[attr]=="")
+							delete item[attr];
+					}
+					item.parent='.o-team';
+					$.profile(item);
+				});
+				pageIndex++;
+				myScroll.refresh();
+		});
+	});
+	//点击全职类型按钮
+	$('#full-load').on('click',function(){
+		$('.o-team').html('');
+		$(this).addClass("b-bigger");$("#all-load").removeClass("b-bigger");$("#part-load").removeClass("b-bigger");
+		pageIndex=1;
+		curJobType='FULL';
+		$.getJSON(domain+'/rest/jobs/getlist?start='+(pageIndex-1)*pageSize+'&end='+pageIndex*pageSize+'&jobtype='+curJobType+'&source='+curSource, function (data, state) {
+			$.each(data.joblist,function(index,item){
+					for(attr in item){
+						if(item[attr]==0)
+							continue;
+						if(item[attr]==null || item[attr]==undefined || item[attr]=="")
+							delete item[attr];
+					}
+					item.parent='.o-team';
+					$.profile(item);
+				});
+				pageIndex++;
+				myScroll.refresh();
+		});
+	});
+	//点击所有类型按钮
+	$('#all-load').on('click',function(){
+		$('.o-team').html('');
+		$(this).addClass("b-bigger");$("#part-load").removeClass("b-bigger");$("#full-load").removeClass("b-bigger");
+		pageIndex=1;
+		curJobType='ALL';
+		$.getJSON(domain+'/rest/jobs/getlist?start='+(pageIndex-1)*pageSize+'&end='+pageIndex*pageSize+'&jobtype='+curJobType+'&source='+curSource, function (data, state) {
+			$.each(data.joblist,function(index,item){
+					for(attr in item){
+						if(item[attr]==0)
+							continue;
+						if(item[attr]==null || item[attr]==undefined || item[attr]=="")
+							delete item[attr];
+					}
+					item.parent='.o-team';
+					$.profile(item);
+				});
+				pageIndex++;
+				myScroll.refresh();
+		});
 	});
 });
 //上拉加载参数

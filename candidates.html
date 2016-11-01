@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no" />
-    <title>love</title>
+    <title>聚点job</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/profile.css" />
     <link rel="stylesheet" href="css/jquery.mmenu.all.css" />
@@ -112,22 +112,27 @@
 						</a>
 					</li>
 				</ul>
-				<a class="menu-btn2"></a>
+				<!-- <a class="menu-btn2"></a> -->
 				<!-- <div style="text-align:center;top: 85%;left: 45.5%;position: absolute"><a class="menu-btn2"></a></div> -->
 			</nav>
 			
 		<div id="page">
+			<a name="top"></a>
 			<div id="header" class="height_1">
 				<div class="header-content">
-					<a href="javascript:history.back();" class="p-link-back"><i class="fa fa-arrow-left"></i></a>
-					<a class="menu-btn"></a>
-					<a href="/index" class="p-link-home"><i class="fa fa-home"></i></a>
+					<!-- <a href="javascript:history.back();" class="p-link-back"><i class="fa fa-arrow-left"></i></a> -->
+					<!-- <a class="menu-btn"></a> --><span style="font-size: 20px;font-weight: bold;color: white;">聚点job</span>
+					<a href="candidates.html" class="p-link-home"><i class="fa fa-home"></i></a>
 				</div>
 			</div>
 			<div class="bannerPane">
 				<div class="overlay"></div>
 				<div class="s-banner-content">
-					<div><img  width="100" src="img/logo-pages.svg" /></div>
+					<div>
+						<a href="#" id="part-load" class="o-buttons" style="background:#27c181;border-radius: 30px;"><i class="fa fa-github-alt"></i>兼职/实习</a>
+						<a href="#" id="all-load" class="o-buttons b-bigger" style="background:#8c0707;border-radius: 30px;"><i class="fa fa-home"></i>所有类型</a>
+						<a href="#" id="full-load" class="o-buttons" style="background:#EA2424;border-radius: 30px;"><i class="fa fa-suitcase"></i> 全职工作</a>
+					</div>
 				</div>
 			</div>
 			<div id="content">
@@ -157,12 +162,16 @@
 					</div>
 				</div>
 			</div>
-			
-			<div class="subFooter">Copyright 2013. All rights reserved.</div>
+			<p id="back-to-top">
+				<a href="#top" id="bt"><i class="fa fa-arrow-circle-o-up fa-2x" style="color:black"></i></a>
+			</p>
+			<div class="subFooter">Copyright 2016. All rights reserved.</div>
 			
 		</div>
     <script src="js/zepto.min.js"></script>
     <script src="js/fx.js"></script>
+	<script src="js/fx_methods.js"></script>
+	<script src="js/zepto.scroll.js"></script>
     <script src="js/slideUpDown.js"></script>
 	<script type="text/javascript" src="js/scroll.js"></script>
     <script src="js/profile.js"></script>

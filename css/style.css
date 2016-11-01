@@ -234,7 +234,7 @@ a.menu-btn2
 #Logo img { }
 
 .bannerPane { text-align:center; overflow: hidden; height:150px; position:relative;
-	background: url("../img/2.jpg") no-repeat center center; background-size:cover;}
+	background: url("../img/logobg2.png") no-repeat center center; background-size:cover;}
 .bannerPane .overlay { background:#000; opacity:0.3;  position:absolute; z-index:1; width:100%; top:0px; left:0px; height:100%; }
 .s-banner-content { position:absolute; bottom:10px; width:100%; text-align:center; z-index:2; color:#fff; font-size:20px; text-transform:uppercase; }
 .bannerPane img {  }
@@ -645,9 +645,9 @@ body .camera_thumbs_cont ul li > img { height:100%; }
 	overflow-y: scroll;
 }
 
-.hidejob{color: #FFF;
+.hidejob{color: #FFF;display:none;
     position: fixed !important;
-    left: 10px;
+    left: 15px;
     top: 10px;
     background: none !important;
     z-index: 0 !important;
@@ -665,3 +665,15 @@ body .camera_thumbs_cont ul li > img { height:100%; }
 
 #job-detail-header{text-align: center; height: 76px;z-index:3;position:fixed;width: 100%; background-size: 100% !important;}
 #job-detail-ct{padding-left: 5px;}
+
+/*返回顶部样式*/
+#back-to-top{
+	position:fixed;
+	display:none;
+	bottom:2px;
+	z-index:1;
+	margin: 0 0 35px 10px;
+}
+
+/*工作类型*/
+.o-buttons.b-bigger { padding: 10px 10px; font-size: 18px; }
