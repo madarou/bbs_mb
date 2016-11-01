@@ -166,6 +166,9 @@ $.getJSON(domain+'/rest/jobs/getlist?start='+(pageIndex-1)*pageSize+'&end='+page
 			$.profile(item);
 		});
 		pageIndex++;
+		if(pageIndex%2!=0){
+			$('.o-team').append('<div style="text-align:center;font-size:2px;color:rgba(29, 20, 20, 0.46);">关注公众号"聚点一族", 新工作、好工作尽在掌握</div>');
+		}
 		myScroll.refresh();
 /* 		$.profile({parent:'.o-team'});
 		$.profile({parent:'.o-team'});
