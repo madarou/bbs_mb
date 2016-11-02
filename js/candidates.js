@@ -69,11 +69,19 @@ $(function(){
 	// $.profile({parent:'.o-team'});
 	//关闭工作详情
 	$('.hidejob').on('click',function(){
-		$('#job-detail').css('right','0');$('#job-detail').css('width','0%');$('.hidejob').css('display','none');
+		$('#job-detail').css('right','0');$('#job-detail').css('width','0%');$('.hidejob').css('display','none');$('#back-to-main').css('display','none');
+		detailScroll.scrollToElement('#job-detail-ct', 100);
+	});
+	$('#back-to-main').on('click',function(){
+		$('#job-detail').css('right','0');$('#job-detail').css('width','0%');$('.hidejob').css('display','none');$('#back-to-main').css('display','none');
+		detailScroll.scrollToElement('#job-detail-ct', 100);
 	});
 	//点击兼职类型按钮
 	$('#part-load').on('click',function(){
 		$('.o-team').html('');
+		$('#pullUp').css('display','none');
+		$('#empty-loading').addClass('loading');
+		$('#empty-loading').css('display','block');
 		$(this).addClass("b-bigger");$("#all-load").removeClass("b-bigger");$("#full-load").removeClass("b-bigger");
 		pageIndex=1;
 		curJobType='PART';
@@ -89,6 +97,9 @@ $(function(){
 					$.profile(item);
 				});
 				pageIndex++;
+				$('#pullUp').css('display','block');
+				$('#empty-loading').css('display','none');
+				$('#empty-loading').removeClass('loading');
 				myScroll.refresh();
 		});
 		setTimeout(function(){myScroll.scrollToElement('.o-team', 100);},100);
@@ -96,6 +107,9 @@ $(function(){
 	//点击全职类型按钮
 	$('#full-load').on('click',function(){
 		$('.o-team').html('');
+		$('#pullUp').css('display','none');
+		$('#empty-loading').addClass('loading');
+		$('#empty-loading').css('display','block');
 		$(this).addClass("b-bigger");$("#all-load").removeClass("b-bigger");$("#part-load").removeClass("b-bigger");
 		pageIndex=1;
 		curJobType='FULL';
@@ -111,6 +125,9 @@ $(function(){
 					$.profile(item);
 				});
 				pageIndex++;
+				$('#pullUp').css('display','block');
+				$('#empty-loading').css('display','none');
+				$('#empty-loading').removeClass('loading');
 				myScroll.refresh();
 		});
 		setTimeout(function(){myScroll.scrollToElement('.o-team', 100);},100);
@@ -118,6 +135,9 @@ $(function(){
 	//点击所有类型按钮
 	$('#all-load').on('click',function(){
 		$('.o-team').html('');
+		$('#pullUp').css('display','none');
+		$('#empty-loading').addClass('loading');
+		$('#empty-loading').css('display','block');
 		$(this).addClass("b-bigger");$("#part-load").removeClass("b-bigger");$("#full-load").removeClass("b-bigger");
 		pageIndex=1;
 		curJobType='ALL';
@@ -133,6 +153,9 @@ $(function(){
 					$.profile(item);
 				});
 				pageIndex++;
+				$('#pullUp').css('display','block');
+				$('#empty-loading').css('display','none');
+				$('#empty-loading').removeClass('loading');
 				myScroll.refresh();
 		});
 		setTimeout(function(){myScroll.scrollToElement('.o-team', 100);},100);
@@ -167,7 +190,7 @@ $.getJSON(domain+'/rest/jobs/getlist?start='+(pageIndex-1)*pageSize+'&end='+page
 		});
 		pageIndex++;
 		if(pageIndex%2!=0){
-			$('.o-team').append('<div style="text-align:center;font-size:12px;color:rgba(29, 20, 20, 0.46);">关注公众号"聚点一族", 新工作、好工作尽在掌握</div>');
+			$('.o-team').append('<div style="text-align:center;font-size:12px;color:rgba(29, 20, 20, 0.46);">关注公众号"聚点一族", 好工作尽在掌握</div>');
 		}
 		myScroll.refresh();
 /* 		$.profile({parent:'.o-team'});

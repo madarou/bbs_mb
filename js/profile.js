@@ -41,6 +41,7 @@ var imgpref = {"QINGHUA":"http://www.newsmth.net","PKU":"","FDU":"","SJ":"http:/
 					$(item).on('click',function(){
 						$('#job-detail').animate({width:'100%'}, 100,'linear');
 						$('.hidejob').css('display','inherit');
+						$('#back-to-main').css('display','inherit');
 						var jobsource = $(this).attr('id').split('-')[0];
 						var jobid = $(this).attr('id').split('-')[1];
 						$.getJSON(window.domain+'/rest/jobs/getcontent?id='+jobid+'&source='+jobsource,function(data){

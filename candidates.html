@@ -14,9 +14,21 @@
     <style type="text/css">
     
     #o-person-details-pane{
-    font-size: 20px;font-weight: bold;color: white;
-	z-index:10;position:absolute;top: 160px;bottom: 50px;
+    font-size: 20px;font-weight: bold;color: white;width: 100%;
+	z-index:10;position:absolute;top: 130px;bottom:0px;
 } 
+#empty-loading {
+    background:#fff;
+    height:40px;
+    line-height:40px;
+    padding:5px 10px;
+    border-bottom:1px solid #ccc;
+    font-weight:bold;
+    font-size:14px;
+    color:#888;
+	display:none;
+	text-align: center;
+}
     	#pullDown, #pullUp {
     background:#fff;
     height:40px;
@@ -26,8 +38,9 @@
     font-weight:bold;
     font-size:14px;
     color:#888;
+	text-align: center;
 }
-#pullDown .pullDownIcon, #pullUp .pullUpIcon  {
+#pullDown .pullDownIcon, #pullUp .pullUpIcon{
     display:block; float:left;
     width:40px; height:40px;
     background:url(img/pull-icon@2x.png) 0 0 no-repeat;
@@ -43,6 +56,17 @@
     -webkit-transform:rotate(-180deg) translateZ(0);
 }
 
+#empty-loading .pullUpIcon  {
+	display:block; float:left;
+    width:40px; height:40px;
+	background:url(img/pull-icon@2x.png) 0 0 no-repeat;
+    -webkit-background-size:40px 80px;
+    background-size:40px 80px;
+    -webkit-transition-property:-webkit-transform;
+    -webkit-transition-duration:250ms;
+    -webkit-transform:rotate(-180deg) translateZ(0);
+}
+
 #pullDown.flip .pullDownIcon {
     -webkit-transform:rotate(-180deg) translateZ(0);
 }
@@ -51,7 +75,7 @@
     -webkit-transform:rotate(0deg) translateZ(0);
 }
 
-#pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+#pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon, #empty-loading.loading .pullUpIcon {
     background-position:0 100%;
     -webkit-transform:rotate(0deg) translateZ(0);
     -webkit-transition-duration:0ms;
@@ -66,7 +90,11 @@
     from { -webkit-transform:rotate(0deg) translateZ(0); }
     to { -webkit-transform:rotate(360deg) translateZ(0); }
 }
+
     </style>              
+	<div id='wx_pic' style='margin:0 auto;display:none;'>
+		<img src='img/jp.jpg' />
+	</div>
   </head>
   <body class="o-page p-about">
   <!-- Menu navigation -->
@@ -137,8 +165,11 @@
 					<div id="scroller" class="o-person-details">
 							<div class="o-team">
 							</div>
-							<div id="pullUp" style="text-align: center;">
+							<div id="pullUp">
 								<span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+							</div>
+							<div id="empty-loading">
+								<span class="pullUpIcon"></span><span class="">加载中...</span>
 							</div>
 					</div>
 					
@@ -152,8 +183,10 @@
 					</div>
 					<div class="bannerPane">
 						<div class="overlay"></div>
+						<div class="s-banner-content" style="font-size:14px">关注公众号"聚点一族", 好工作尽在掌握
+						</div>
 					</div>
-					<div id="job-detail-wrapper" style="position: absolute;top: 160px;bottom:0px;">
+					<div id="job-detail-wrapper" style="position: absolute;top: 130px;bottom:0px;font-size:16px;word-wrap:break-word;word-break:break-all;">
 						<div>
 							<div id="job-detail-ct">
 							</div>
@@ -164,7 +197,10 @@
 			<p id="back-to-top">
 				<a href="#top" id="bt"><i class="fa fa-arrow-circle-o-up fa-3x" style="color:black"></i></a>
 			</p>
-			<div class="subFooter">Copyright 2016. All rights reserved.</div>
+			<p id="back-to-main">
+				<a href="#" id="bm"><i class="fa fa-mail-reply fa-2x" style="color:black"></i></a>
+			</p>
+			<!-- <div class="subFooter">Copyright 2016. All rights reserved.</div> -->
 			
 		</div>
     <script src="js/zepto.min.js"></script>

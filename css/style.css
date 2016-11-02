@@ -235,7 +235,7 @@ a.menu-btn2
 #Logo.svg img { top: -9px; position: relative; }
 #Logo img { }
 
-.bannerPane { text-align:center; overflow: hidden; height:150px; position:relative;
+.bannerPane { text-align:center; overflow: hidden; height:120px; position:relative;
 	background: url("../img/logobg2.png") no-repeat center center; background-size:cover;}
 .bannerPane .overlay { background:#000; opacity:0.3;  position:absolute; z-index:1; width:100%; top:0px; left:0px; height:100%; }
 .s-banner-content { position:absolute; bottom:10px; width:100%; text-align:center; z-index:2; color:#fff; font-size:20px; text-transform:uppercase; }
@@ -673,7 +673,16 @@ body .camera_thumbs_cont ul li > img { height:100%; }
 	position:fixed;
 	bottom:2px;
 	z-index:11;
-	margin: 0 0 35px 10px;
+	margin: 0 0 15px 15px;
+}
+/*返回主页样式*/
+#back-to-main{
+	position:fixed;
+	bottom:2px;
+	z-index:100;
+	margin: 0 0 20px 0;
+	left: 46%;
+	display:none;
 }
 
 /*工作类型*/
