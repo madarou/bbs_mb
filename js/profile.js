@@ -1,9 +1,9 @@
 //一个profile就是列表中的一项，包含了学校头像，学校来源吧，工作title，发布时间，工作类型，等等信息的展示
-var avatars = {"QINGHUA":"img/QINGHUA.jpg","PKU":"img/PKU.jpg","FDU":"img/FDU.jpg","SJ":"img/SJ.jpg","NJU":"img/NJU.jpg","CD":"img/CD.jpg","DZKD":"img/DZKD.jpg"};
+var avatars = {"QINGHUA":"img/QINGHUA.jpg","PKU":"img/PKU.jpg","FDU":"img/FDU.jpg","SJ":"img/SJ.jpg","NJU":"img/NJU.jpg","CD":"img/CD.jpg","DZKD":"img/DZKD.jpg","CDLG":"img/CDLG.jpg"};
 var jobtypes = {"FULL":"全职","PART":"兼职","BOTH":"全兼"};
-var sources ={"QINGHUA":"清华大学","PKU":"北京大学","FDU":"复旦大学","SJ":"上海交通大学","NJU":"南京大学","CD":"四川大学","DZKD":"电子科技大学"};
+var sources ={"QINGHUA":"清华大学","PKU":"北京大学","FDU":"复旦大学","SJ":"上海交通大学","NJU":"南京大学","CD":"四川大学","DZKD":"电子科技大学","CDLG":"成都理工大学"};
 var bgcolors = {"FULL":"#EA2424","PART":"#27c181","BOTH":"#8c0707"};
-var imgpref = {"QINGHUA":"http://www.newsmth.net","PKU":"","FDU":"","SJ":"http://bbs.sjtu.cn","NJU":""};
+var imgpref = {"QINGHUA":"http://www.newsmth.net","PKU":"","FDU":"","SJ":"http://bbs.sjtu.cn","NJU":"","CDLG":"http://cdut.myubbs.com/"};
 ;(function($,window,undifined){
 	var Profile = function(options){
 		this.settings=$.extend({},Profile.defaults,options);
@@ -47,10 +47,16 @@ var imgpref = {"QINGHUA":"http://www.newsmth.net","PKU":"","FDU":"","SJ":"http:/
 						$.getJSON(window.domain+'/rest/jobs/getcontent?id='+jobid+'&source='+jobsource,function(data){
 							var ct = data.content;//有些学校的图片是相对地址，要加上域名
 							if(_that.settings.source=='QINGHUA'){
-								ct = ct.replace(/<img src="\/nForum/g, '<img src="'+window.imgpref[_that.settings.source]+'/nForum');
+								ct = ct.replace(/<img src="\/nForum/g, '<img style="width:100% !important" src="'+window.imgpref[_that.settings.source]+'/nForum');
 							}
 							else if(_that.settings.source=='SJ'){
-								ct = ct.replace(/<img src="\/file/g, '<img src="'+window.imgpref[_that.settings.source]+'/file');
+								ct = ct.replace(/<img src="\/file/g, '<img style="width:100% !important" src="'+window.imgpref[_that.settings.source]+'/file');
+							}
+							else if(_that.settings.source=='CDLG'){
+								ct = ct.replace(/<img src="data/g, '<img style="width:100% !important" src="'+window.imgpref[_that.settings.source]+'data');
+							}
+							else{
+								ct = ct.replace(/<img src="/g, '<img style="width:100% !important" src="');
 							}
 							$('#job-detail-ct').html(ct);
 							setTimeout(function(){
