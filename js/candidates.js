@@ -160,6 +160,90 @@ $(function(){
 		});
 		setTimeout(function(){myScroll.scrollToElement('.o-team', 100);},100);
 	});
+	//点击所有学校按钮
+	$('#all-school').on('click',function(){
+		$('.o-team').html('');
+		$('#pullUp').css('display','none');
+		$('#empty-loading').addClass('loading');
+		$('#empty-loading').css('display','block');
+		$(this).addClass("b-bigger");$("#west-school").removeClass("b-bigger");$("#east-school").removeClass("b-bigger");
+		pageIndex=1;
+		curSource='';//source空时自然会查询所有学校
+		$.getJSON(domain+'/rest/jobs/getlist?start='+(pageIndex-1)*pageSize+'&end='+pageIndex*pageSize+'&jobtype='+curJobType+'&source='+curSource, function (data, state) {
+			$.each(data.joblist,function(index,item){
+					for(attr in item){
+						if(item[attr]==0)
+							continue;
+						if(item[attr]==null || item[attr]==undefined || item[attr]=="")
+							delete item[attr];
+					}
+					item.parent='.o-team';
+					$.profile(item);
+				});
+				pageIndex++;
+				$('#pullUp').css('display','block');
+				$('#empty-loading').css('display','none');
+				$('#empty-loading').removeClass('loading');
+				myScroll.refresh();
+		});
+		setTimeout(function(){myScroll.scrollToElement('.o-team', 100);},100);
+	});
+	//点击西部学校按钮
+	$('#west-school').on('click',function(){
+		$('.o-team').html('');
+		$('#pullUp').css('display','none');
+		$('#empty-loading').addClass('loading');
+		$('#empty-loading').css('display','block');
+		$(this).addClass("b-bigger");$("#all-school").removeClass("b-bigger");$("#east-school").removeClass("b-bigger");
+		pageIndex=1;
+		curSource='WEST';
+		$.getJSON(domain+'/rest/jobs/getlist?start='+(pageIndex-1)*pageSize+'&end='+pageIndex*pageSize+'&jobtype='+curJobType+'&source='+curSource, function (data, state) {
+			$.each(data.joblist,function(index,item){
+					for(attr in item){
+						if(item[attr]==0)
+							continue;
+						if(item[attr]==null || item[attr]==undefined || item[attr]=="")
+							delete item[attr];
+					}
+					item.parent='.o-team';
+					$.profile(item);
+				});
+				pageIndex++;
+				$('#pullUp').css('display','block');
+				$('#empty-loading').css('display','none');
+				$('#empty-loading').removeClass('loading');
+				myScroll.refresh();
+		});
+		setTimeout(function(){myScroll.scrollToElement('.o-team', 100);},100);
+	});
+	//点击东部学校按钮
+	$('#east-school').on('click',function(){
+		$('.o-team').html('');
+		$('#pullUp').css('display','none');
+		$('#empty-loading').addClass('loading');
+		$('#empty-loading').css('display','block');
+		$(this).addClass("b-bigger");$("#all-school").removeClass("b-bigger");$("#west-school").removeClass("b-bigger");
+		pageIndex=1;
+		curSource='EAST';
+		$.getJSON(domain+'/rest/jobs/getlist?start='+(pageIndex-1)*pageSize+'&end='+pageIndex*pageSize+'&jobtype='+curJobType+'&source='+curSource, function (data, state) {
+			$.each(data.joblist,function(index,item){
+					for(attr in item){
+						if(item[attr]==0)
+							continue;
+						if(item[attr]==null || item[attr]==undefined || item[attr]=="")
+							delete item[attr];
+					}
+					item.parent='.o-team';
+					$.profile(item);
+				});
+				pageIndex++;
+				$('#pullUp').css('display','block');
+				$('#empty-loading').css('display','none');
+				$('#empty-loading').removeClass('loading');
+				myScroll.refresh();
+		});
+		setTimeout(function(){myScroll.scrollToElement('.o-team', 100);},100);
+	});
 });
 //上拉加载参数
 var data,

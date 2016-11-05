@@ -238,7 +238,7 @@ a.menu-btn2
 .bannerPane { text-align:center; overflow: hidden; height:120px; position:relative;
 	background: url("../img/logobg2.png") no-repeat center center; background-size:cover;}
 .bannerPane .overlay { background:#000; opacity:0.3;  position:absolute; z-index:1; width:100%; top:0px; left:0px; height:100%; }
-.s-banner-content { position:absolute; bottom:10px; width:100%; text-align:center; z-index:2; color:#fff; font-size:20px; text-transform:uppercase; }
+.s-banner-content { position:absolute; width:100%; text-align:center; z-index:3; color:#fff; font-size:20px; text-transform:uppercase; }
 .bannerPane img {  }
 
 a.p-link-home { color: #FFF; position: fixed !important; right: 10px; top: 10px; background: none !important; z-index: 0 !important; font-size: 20px; 
@@ -398,7 +398,7 @@ box-shadow: none; margin-bottom: 5px; }
 
 
 /*********************************************************************************** Shortcodes */
-.o-buttons { padding:5px 10px; font-size:12px; color:#fff !important; margin:3px; text-decoration:none !important; display:inline-block;}
+.o-buttons { padding:5px 10px; font-size:12px; color:rgba(255, 255, 255, 0.74) !important; margin:3px; text-decoration:none !important; display:inline-block;}
 .o-buttons.b-big { padding: 14px 20px; font-size: 18px; }
 .o-buttons:hover { text-decoration:none; }
 .o-buttons.blue { background: #587eac; }
@@ -709,4 +709,4 @@ body .camera_thumbs_cont ul li > img { height:100%; }
 }
 
 /*工作类型*/
-.o-buttons.b-bigger { padding: 10px 10px; font-size: 18px; }
+.o-buttons.b-bigger { padding: 5px 10px; /*font-size: 14px; */ color: white !important;font-weight:bold}
