@@ -1,7 +1,9 @@
 //一个profile就是列表中的一项，包含了学校头像，学校来源吧，工作title，发布时间，工作类型，等等信息的展示
-var avatars = {"QINGHUA":"img/QINGHUA.jpg","PKU":"img/PKU.jpg","FDU":"img/FDU.jpg","SJ":"img/SJ.jpg","NJU":"img/NJU.jpg","CD":"img/CD.jpg","DZKD":"img/DZKD.jpg","CDLG":"img/CDLG.jpg","XNCD":"img/XNCD.jpg"};
+var avatars = {"QINGHUA":"img/QINGHUA.jpg","PKU":"img/PKU.jpg","FDU":"img/FDU.jpg","SJ":"img/SJ.jpg","NJU":"img/NJU.jpg","CD":"img/CD.jpg",
+"DZKD":"img/DZKD.jpg","CDLG":"img/CDLG.jpg","XNCD":"img/XNCD.jpg","CQ":"img/CQ.jpg","XNDX":"img/XNDX.jpg"};
 var jobtypes = {"FULL":"全职","PART":"兼职","BOTH":"全兼"};
-var sources ={"QINGHUA":"清华大学","PKU":"北京大学","FDU":"复旦大学","SJ":"上海交通大学","NJU":"南京大学","CD":"四川大学","DZKD":"电子科技大学","CDLG":"成都理工大学","XNCD":"西南财经大学"};
+var sources ={"QINGHUA":"清华大学","PKU":"北京大学","FDU":"复旦大学","SJ":"上海交通大学","NJU":"南京大学","CD":"四川大学","DZKD":"电子科技大学",
+"CDLG":"成都理工大学","XNCD":"西南财经大学","CQ":"重庆大学","XNDX":"西南大学"};
 var bgcolors = {"FULL":"#EA2424","PART":"#27c181","BOTH":"#8c0707"};
 var imgpref = {"QINGHUA":"http://www.newsmth.net","PKU":"","FDU":"","SJ":"http://bbs.sjtu.cn","NJU":"","CDLG":"http://cdut.myubbs.com/","XNCD":"http://www.ghsq.net/"};
 ;(function($,window,undifined){
